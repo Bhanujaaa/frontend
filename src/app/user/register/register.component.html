@@ -1,0 +1,58 @@
+<body>
+  <div class="section">
+      <br>
+      <div class="header">
+          <h1>Sign Up</h1>
+      </div>
+      <div class="form1">
+          <form action="adduser">
+              <div class="body">
+                  <div class="one">
+                      <input type="text" [(ngModel)]="username" name="username" placeholder="Your username" required>
+                  </div>
+                  <div class="two">
+                      <input type="text" [(ngModel)]="email" name="email" placeholder="Your email" required>
+                  </div>
+                  <div class="three">
+
+                      <input type="text" [(ngModel)]="password" name="password" placeholder="Your password" required>
+                  </div>
+                  <div class="four">
+                      <input type="text"  [(ngModel)]="phone" name="phone" placeholder="Your phone" required>
+                  </div>
+                  <br>
+              </div>
+              <div class="final">
+                <button type="submit" (click)="register()">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</body>
+
+
+
+
+
+
+<!-- <div >
+    <form #contactForm="ngForm">
+        <div>
+            <input type="text" [(ngModel)]="name" name="name" placeholder="name">
+        </div>
+      <div>
+        
+        <input type="text" [(ngModel)]="email" name="email" placeholder="email">
+      </div>
+      <div>
+        
+        <input type="password"[(ngModel)]="password" name="password" placeholder="password">
+      </div>
+  
+      <div>
+        <button type="submit" (click)="register()">Submit</button>
+      </div>
+  
+    </form>
+  </div>
+   -->

@@ -1,0 +1,65 @@
+
+<body>
+  <div class="section">
+      <br>
+      <div class="header">
+          <h1>Log In</h1>
+      </div>
+      <div class="form1">
+          <form name="myForm">
+              <div class="body">
+                  <div class="one">
+
+                      <input type="email" [(ngModel)]="email" name="email" placeholder="Your Email" autocomplete="off">
+                  </div>
+                  <div class="two">
+                      <input type="password" [(ngModel)]="password" name="password" placeholder="Your Password" autocomplete="off">
+                    
+                  </div>
+              </div>
+             
+           
+              <div class="final">
+                 
+                <button type="submit" (click)="login()">Submit</button>
+              </div>
+
+          </form>
+      </div>
+      <br>
+      <br>
+      <div class="form2">
+          <div class="last">
+              <div>Not an registered user?</div>
+
+              <form action="register">
+                  <input type="submit" value="Create an account" name="approve" />
+
+              </form>
+
+          </div>
+      </div>
+  </div>
+
+
+</body>
+
+<!-- <div >
+    <form #contactForm="ngForm">
+  
+      <div>
+        
+        <input type="text" [(ngModel)]="email" name="email" placeholder="email" >
+      </div>
+      <div>
+        
+        <input type="text"[(ngModel)]="password" name="password" placeholder="password">
+      </div>
+  
+      <div>
+        <button type="submit" (click)="login()">Submit</button>
+      </div>
+  
+    </form>
+  </div>
+   -->

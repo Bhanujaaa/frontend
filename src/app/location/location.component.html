@@ -1,0 +1,7 @@
+<!-- <p>location works!</p> -->
+<div class="form-group">
+    <select class="form-control" fromControlName="city">
+        <option value="" selected disabled>select country</option>
+        <option *ngFor="let c of city" [ngValue]="c">{{c.cityName}}</option>
+    </select>
+</div>
