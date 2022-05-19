@@ -168,8 +168,4 @@ public LogOut(){
   localStorage.removeItem('userType')
 
 }
-
-
-
-
 }
