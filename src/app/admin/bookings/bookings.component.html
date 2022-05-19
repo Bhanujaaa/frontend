@@ -1,0 +1,45 @@
+<html>
+<mat-toolbar  class="navbar">
+  <div>Movie Mix</div>
+  <div>
+    <span  style="cursor: pointer;" routerLink="/admin/movie">Movies</span>
+    <span style="cursor: pointer;" routerLink="/admin/cinema">Cinemas</span>
+    <span style="cursor: pointer;" routerLink="/admin/location">Locations</span>
+    <span style="cursor:pointer" routerLink="/admin/showss">Shows</span>
+    <span style="cursor:pointer" routerLink="/admin/seat">Seats</span>
+    <span style="cursor:pointer" routerLink="/admin/book">Bookings</span>
+    <span style="cursor: pointer;" routerLink="/admin/user">Users</span>
+    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="service.LogOut()">LogOut</span>
+  </div>
+</mat-toolbar>
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div  fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let b of book">
+        <mat-card class="mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>User: {{b.UserId.username}}</mat-card-title>
+          </mat-card-header>
+          <!-- <img mat-card-image class="imgs" src="{{m.image}}"> -->
+          <mat-card-content>
+            <p>
+                <strong>Movie Name: </strong>{{b.movieId.title}}<br>
+              <strong>Theater: </strong>{{b.cinemaId.name}}<br>
+              
+              <strong>No. of seats</strong>{{b.seats}}<br>
+              <strong>Total cost: </strong>{{b.total}}<br>
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button (click)="editSeat(s._id)" >Edit</button> -->
+            
+            <!-- <button mat-button (click)="deleteSeat(s._id)" >Delete</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  </html>
+  

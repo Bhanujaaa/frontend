@@ -1,0 +1,115 @@
+<div class="form-container" *ngIf="this.ser.showAdd">
+    <!-- <mat-card class="bg-card mat-elevation-z19"> -->
+    <form class="border border-primary">
+      <div mat-dialog-title>
+        Add New Show
+      </div>
+      <mat-dialog-content>
+        <mat-form-field>
+          <input [(ngModel)]="startAt" name="startAt" matInput placeholder="Start At" type="text" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="ticketPrice" name="ticketPrice" matInput placeholder="Ticket Price" type="number" required>
+  
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Select Movie</mat-label>
+          <mat-select class="form-control" fromControlName="movieId" [(ngModel)]="movieId" name="movieId">
+              <mat-option *ngFor="let m of movieN" [value]="m._id">{{m.title}}</mat-option>
+          </mat-select> 
+          <!-- <input [(ngModel)]="movieId" name="movieId" matInput placeholder="Movie Id" type="text" required> -->
+  
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Select Cinema</mat-label>
+          <mat-select class="form-control" fromControlName="cinemaId" [(ngModel)]="cinemaId" name="cinemaId">
+              <mat-option *ngFor="let c of cineN" [value]="c._id">{{c.name}}</mat-option>
+          </mat-select> 
+          <!-- <input [(ngModel)]="cinemaId" name="cinemaId" matInput placeholder="Cinema Id" type="text" required> -->
+  
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="seatsAvailable" name="seatsAvailable" matInput placeholder="Seats Available" type="number" required>
+  
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Select Seats</mat-label>
+          <mat-select class="form-control" fromControlName="seats" [(ngModel)]="seats" name="seats" multiple>
+              <mat-option *ngFor="let s of seatN" [value]="s._id">{{s.seatNum}}{{s.IsSelected}}</mat-option>
+          </mat-select> 
+          <!-- <input [(ngModel)]="seats" name="seats" matInput placeholder="Seats" type="text" required> -->
+  
+        </mat-form-field>
+  
+  
+  
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button  mat-dialog-close (click)="AddShow()" color="primary">ADD</button>
+      </mat-dialog-actions>
+    </form>
+    <!-- </mat-card> -->
+  </div>
+  
+  <div class="form-container" *ngIf="this.ser.showEdit">
+    <!-- <mat-card class="bg-card mat-elevation-z19"> -->
+    <form class="border border-primary">
+      <div mat-dialog-title>
+        Edit Show
+      </div>
+      <mat-dialog-content>
+        
+        <mat-form-field>
+            <input [(ngModel)]="startAt" name="startAt" matInput placeholder="Start At" type="text" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="ticketPrice" name="ticketPrice" matInput placeholder="Ticket Price" type="text" required>
+    
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Select Movie</mat-label>
+            <mat-select class="form-control" fromControlName="movieId" [(ngModel)]="movieId" name="movieId">
+                <mat-option *ngFor="let m of movieN" [value]="m._id">{{m.title}}</mat-option>
+            </mat-select> 
+            <!-- <input [(ngModel)]="movieId" name="movieId" matInput placeholder="Movie Id" type="text" required> -->
+    
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Select Cinema</mat-label>
+            <mat-select class="form-control" fromControlName="cinemaId" [(ngModel)]="cinemaId" name="cinemaId">
+                <mat-option *ngFor="let c of cineN" [value]="c._id">{{c.name}}</mat-option>
+            </mat-select> 
+            <!-- <input [(ngModel)]="cinemaId" name="cinemaId" matInput placeholder="Cinema Id" type="text" required> -->
+    
+          </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="seatsAvailable" name="seatsAvailable" matInput placeholder="Seats Available" type="text" required>
+    
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Select Seats</mat-label>
+            <mat-select class="form-control" fromControlName="seats" [(ngModel)]="seats" name="seats" multiple>
+                <mat-option *ngFor="let s of seatN" [value]="s._id">{{s.seatNum}}{{s.IsSelected}}</mat-option>
+            </mat-select> 
+            <!-- <input [(ngModel)]="seats" name="seats" matInput placeholder="Seats" type="text" required> -->
+    
+          </mat-form-field>
+  
+  
+  
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button  mat-dialog-close  (click)="editShow()" color="primary">ADD</button>
+      </mat-dialog-actions>
+    </form>
+    <!-- </mat-card> -->
+  </div>
+  <div class="delete" *ngIf="this.ser.showDelete">
+    <!-- <h2 mat-dialog-title>Confirmation</h2> -->
+  <mat-dialog-content>Are you sure to Delete</mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="deleteShow()" mat-dialog-close mat-dialog-close="Ok">Confirm</button>
+      <button mat-raised-button  mat-dialog-close mat-dialog-close="No">Cancel</button>
+  </mat-dialog-actions>
+    </div>
+  

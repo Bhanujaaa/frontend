@@ -1,0 +1,9 @@
+<!-- <p>user-update works!</p> -->
+<div class="delete" *ngIf="this.ser.userDelete">
+    <!-- <h2 mat-dialog-title>Confirmation</h2> -->
+  <mat-dialog-content>Are you sure to Delete</mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="deleteUser()" mat-dialog-close mat-dialog-close="Ok">Confirm</button>
+      <button mat-raised-button  mat-dialog-close mat-dialog-close="No">Cancel</button>
+  </mat-dialog-actions>
+    </div>

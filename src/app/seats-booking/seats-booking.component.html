@@ -1,3 +1,13 @@
+<html>
+<mat-toolbar color="primary" class="navbar">
+    <div>Movie Mix</div>
+    <div>
+        <span routerLink='/user/show' style="cursor: pointer;">Book</span>
+        <span routerLink='/details' style="cursor: pointer;">My Bookings</span>
+      <span class="HomePage"  style="cursor:pointer" routerLink="/user/home" (click)="seatService.LogOut()">LogOut</span>
+    </div>
+</mat-toolbar>
+
 <div style="width: 100px; margin: 20px auto; display: block;">
     <span [ngClass]="{'seat-disabled': true}">reserved</span>
     <span [ngClass]="{'seat-selected': true}">selected</span>
@@ -12,5 +22,7 @@
             </td>
         </tr>
     </table>
-    <button (click)="openDialog()" id="submitButton">Book Seat</button>
+    <button mat-raised-button color="primary" (click)="openDialog()" id="submitButton">Book Seat</button>
+    <!-- <button (click)="freeSeat()" id="freeSeats">Free All The Seats</button> -->
 </div>
+</html>

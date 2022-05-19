@@ -1,0 +1,47 @@
+<html>
+<mat-toolbar  class="navbar">
+  <div>Movie Mix</div>
+  <div>
+    <span  style="cursor: pointer;" routerLink="/admin/movie">Movies</span>
+    <span style="cursor: pointer;" routerLink="/admin/cinema">Cinemas</span>
+    <span style="cursor: pointer;" routerLink="/admin/location">Locations</span>
+    <span style="cursor:pointer" routerLink="/admin/showss">Shows</span>
+    <span style="cursor:pointer" routerLink="/admin/seat">Seats</span>
+    <span style="cursor:pointer" routerLink="/admin/book">Bookings</span>
+    <span style="cursor: pointer;" routerLink="/admin/user">Users</span>
+    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="service.LogOut()">LogOut</span>
+  </div>
+</mat-toolbar>
+<button mat-raised-button color="primary" (click)="addShow()">ADD</button>
+
+  
+  
+  
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div  fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let s of show">
+        <mat-card class="example-card mat-elevation-z19">
+          <mat-card-header>
+            <mat-card-title>{{s.startAt}}</mat-card-title>
+          </mat-card-header>
+          <!-- <img mat-card-image class="imgs" src="{{m.image}}"> -->
+          <mat-card-content>
+            <p>
+              <strong>Movie Name: </strong>{{s.movieId.title}}<br><strong>Show In: </strong>{{s.cinemaId.name}}<br><strong>TicketPrice: </strong>{{s.ticketPrice}}<br><strong>seatsAvailable: </strong>{{s.seatsAvailable}}
+              <!-- <div *ngFor="let c of s.seats">seatNum: {{c.seatNum}} </div> -->
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="freeSeat(s._id)" id="freeSeats">Free All The Seats</button>
+            <button mat-button (click)="editShow(s._id)" >Edit</button>
+            <button mat-button (click)="deleteShow(s._id)" >Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  </html>
+  

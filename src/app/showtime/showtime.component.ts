@@ -20,6 +20,7 @@ export class ShowtimeComponent implements OnInit {
     this.ser.getShowtime().subscribe((show:showtime[])=>{
       this.show=show
       console.log(show)
+      console.log("hi ra i am show time")
       console.log(this.show[0].cinemaId)
       this.loading=false
       this.dialogRef.close('success');

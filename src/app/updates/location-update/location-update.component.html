@@ -1,0 +1,44 @@
+<!-- <p>location-update works!</p> -->
+<div class="form-container" *ngIf="this.ser.cityAdd">
+    <!-- <mat-card class="bg-card mat-elevation-z19"> -->
+    <form class="border border-primary">
+      <div mat-dialog-title>
+        Add New City
+      </div>
+      <mat-dialog-content>
+        <mat-form-field>
+          <input [(ngModel)]="cityName" name="cityName" matInput placeholder="City Name" type="text" required>
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button  mat-dialog-close (click)="addCity()" color="primary">ADD</button>
+      </mat-dialog-actions>
+    </form>
+    <!-- </mat-card> -->
+  </div>
+  
+  <div class="form-container" *ngIf="this.ser.cityEdit">
+    <!-- <mat-card class="bg-card mat-elevation-z19"> -->
+    <form class="border border-primary">
+      <div mat-dialog-title>
+        Edit City
+      </div>
+      <mat-dialog-content>
+        <mat-form-field>
+          <input [(ngModel)]="cityName" name="cityName" matInput placeholder="City Name" type="text" required>
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button  mat-dialog-close  (click)="editCity()" color="primary">ADD</button>
+      </mat-dialog-actions>
+    </form>
+    <!-- </mat-card> -->
+  </div>
+  <div class="delet" *ngIf="this.ser.cityDelete">
+    <!-- <h2 mat-dialog-title>Confirmation</h2> -->
+  <mat-dialog-content>Are you sure to Delete</mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="deleteCity()" mat-dialog-close mat-dialog-close="Ok">Confirm</button>
+      <button mat-raised-button  mat-dialog-close mat-dialog-close="No">Cancel</button>
+  </mat-dialog-actions>
+    </div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   email!: string
   password!: string
   phone!:string
-  constructor(private userservice:UserService,private http:HttpClient) { }
+  constructor(private userservice:UserService,private http:HttpClient,public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -21,11 +22,12 @@ export class RegisterComponent implements OnInit {
     username:this.username,
         email: this.email,
         password: this.password,
-        phone:this.phone
       }
-      this.http.post('http://localhost:8080/users/register', credentials).subscribe({
+      console.log(credentials)
+      this.http.post('http://34.208.61.254:8080/users/register', credentials).subscribe({
         next: (res) => {
           console.log(res)
+          this.router.navigateByUrl('/user/login')
         },
         error: (err) => { console.log(err) }
       })

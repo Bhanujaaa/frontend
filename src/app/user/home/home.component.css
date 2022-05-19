@@ -1,106 +1,27 @@
-body {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
-    margin-bottom: auto;
-    width: 30em;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 1.7;
-    color: #c4c3ca;
-    background-color: #1f2029;
-    overflow-x: hidden;
-    height: 30em;
-
-
-    /* border: 2px solid white; */
-
-
+.navbar{
+  justify-content: space-between;
+  position: sticky !important;
+  color: white;
+  width: 100%;
+  background-image: url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+  top: 0px;
+  overflow: hidden;
+  background-size: cover;
+  z-index: 9999;
+  
 }
-.header h1{
-    padding-top:0px;
-    margin-top:0px;
+span{
+  padding-right: 1rem;
 }
-.section {
-    text-align: center;
-   width:30em;
-   height: 30em;
-   margin-top: 0px;
-   padding-top: 0px;
-    background-color: #2a2b38;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 6px;
+
+html{
+  height: 100vh !important;;
+  width: 100vw!important;
+  background-image:url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+  background-size:contain;
+  
 
 }
-/* .one input,.two input{ */
-    .body input{
-    padding: 13px 20px;
-  padding-left: 55px;
-  height: 48px;
-  width: 70%;
-  font-weight: 500;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 22px;
-  letter-spacing: 0.5px;
-  outline: none;
-  color: #c4c3ca;
-  background-color: #1f2029;
-  border: none;
-  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
-}
-.body{
- 
-        display: grid;
-        gap: 10px;
-      
-      
-}
-.final input{  
-    border-radius: 4px;
-    height: 44px;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0 30px;
-    letter-spacing: 1px;
-    
-    display: inline-flex;
-   
-    align-items: center;
-    
-    justify-content: center;
-   
-    text-align: center;
-    border: none;
-    background-color: #ffeba7;
-    /* background-color: #ffd17d; */
-    color:#1f2029;
-    box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
-  }
-
-.final input:hover{  
-  color: #ffeba7;
-  /* color:#ffd17d ; */
-  background-color: #1f2029;;
-  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-}
-.last{
-    display: flex;
-    gap:12px;
-    font-family: 'Poppins', sans-serif;
-    justify-content: center;
-}
-.last form input{
-    border:0px;
-    font-family: 'Poppins', sans-serif;
-    background-color:transparent; 
-  text-decoration: underline; 
-  cursor: pointer; 
-  /* color: #ffd17d;  */
-  color:#ffeba7;
+body{
+  background-image:url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
 }

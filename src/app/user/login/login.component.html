@@ -1,5 +1,73 @@
+<!-- <html>
+  <div class="form-container mat-elevation-z5">
+    <h1>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <mat-form-field>
+        <input matInput placeholder="Email address" formControlName="email" />
+        <mat-error *ngIf="email?.errors?.['required']">
+          Email address is required
+        </mat-error>
+        <mat-error *ngIf="email?.errors?.['email']">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password" />
+        <mat-error *ngIf="password?.errors?.['required']">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <div class="center margin-top">
+          <button type="submit" mat-raised-button color="primary">Login</button>
+      </div>
+      <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/sign-up">Sign up!</a></span>
+    </form>
+  </div>
+</html> -->
+<html>
+<mat-toolbar color="primary" class="navbar">
+  <div>Movie Mix</div>
+  <div>
+    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home">Home</span>
+    <span class="LoginPage" style="cursor: pointer;" routerLink="/user/login">Login</span>
+    <span class="RegisterPage" style="cursor: pointer;" routerLink="/user/register">Register</span>
+  </div>
 
-<body>
+</mat-toolbar>
+<mat-toolbar *ngIf="successMsg" color="green">{{ successMsg }}</mat-toolbar>
+<mat-toolbar *ngIf="errorMsg" color="warn">{{ errorMsg }}</mat-toolbar>
+<div class="form-container">
+<mat-card class="bg-card mat-elevation-z19">
+  <form (submit)="login()" class="border border-primary">
+    <mat-form-field>
+      <input [(ngModel)]="email" name="email" matInput placeholder="Your Email" type="email" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="password" name="password" matInput placeholder="Your Password" type="password" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Login</button>
+    <br>
+    <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/user/register">Sign up!</a></span>
+    <!-- <div>Not an registered user?</div>
+    <a mat-raised-button color="accent" type="submit" (click)="register()" value="Create an account" name="approve">Register</a> -->
+  </form>
+  <form >
+    
+
+</form>
+</mat-card>
+</div>
+<router-outlet></router-outlet>
+</html>
+
+
+
+
+
+
+
+<!-- <body>
   <div class="section">
       <br>
       <div class="header">
@@ -42,7 +110,7 @@
   </div>
 
 
-</body>
+</body> -->
 
 <!-- <div >
     <form #contactForm="ngForm">

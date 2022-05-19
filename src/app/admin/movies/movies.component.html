@@ -1,0 +1,65 @@
+<!-- <p>movies works!</p> -->
+<html>
+<mat-toolbar  class="navbar">
+  <div>Movie Mix</div>
+  <div>
+    <span  style="cursor: pointer;" routerLink="/admin/movie">Movies</span>
+    <span style="cursor: pointer;" routerLink="/admin/cinema">Cinemas</span>
+    <span style="cursor: pointer;" routerLink="/admin/location">Locations</span>
+    <span style="cursor:pointer" routerLink="/admin/showss">Shows</span>
+    <span style="cursor:pointer" routerLink="/admin/seat">Seats</span>
+    <span style="cursor:pointer" routerLink="/admin/book">Bookings</span>
+    <span style="cursor: pointer;" routerLink="/admin/user">Users</span>
+    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="service.LogOut()">LogOut</span>
+  </div>
+</mat-toolbar>
+<button mat-raised-button color="primary" style="margin-right:0" (click)="addMovie()">ADD</button>
+<!-- <div class="content">
+  <div fxLayout="row wrap" fxLayoutAlign="space-evenly" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let c of movie">
+<mat-card class="example-card mat-elevation-z19" >
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{c.title}}</mat-card-title>
+  
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p>
+      {{m.language}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+ 
+    <button mat-button (click)="editMovie(c._id)">Edit</button>
+    <button mat-button (click)="deleteMovie(c._id)">Delete</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+</div>
+</div> -->
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div  fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let m of movie">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>{{m.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image class="imgs" src="{{m.image}}">
+        <mat-card-content>
+          <p>
+            {{m.language}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="editMovie(m._id)" >Edit</button>
+          <button mat-button (click)="deleteMovie(m._id)" >Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
+</html>

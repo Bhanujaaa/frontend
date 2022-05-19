@@ -1,58 +1,30 @@
-<body>
-  <div class="section">
-      <br>
-      <div class="header">
-          <h1>Sign Up</h1>
-      </div>
-      <div class="form1">
-          <form action="adduser">
-              <div class="body">
-                  <div class="one">
-                      <input type="text" [(ngModel)]="username" name="username" placeholder="Your username" required>
-                  </div>
-                  <div class="two">
-                      <input type="text" [(ngModel)]="email" name="email" placeholder="Your email" required>
-                  </div>
-                  <div class="three">
-
-                      <input type="text" [(ngModel)]="password" name="password" placeholder="Your password" required>
-                  </div>
-                  <div class="four">
-                      <input type="text"  [(ngModel)]="phone" name="phone" placeholder="Your phone" required>
-                  </div>
-                  <br>
-              </div>
-              <div class="final">
-                <button type="submit" (click)="register()">Submit</button>
-              </div>
-          </form>
-      </div>
+<html>
+<mat-toolbar color="primary" class="navbar">
+  <div>Movie Mix</div>
+  <div>
+    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home">Home</span>
+    <span class="LoginPage" style="cursor: pointer;" routerLink="/user/login">Login</span>
+    <span class="RegisterPage" style="cursor: pointer;" routerLink="/user/register">Register</span>
   </div>
-</body>
 
+</mat-toolbar>
 
+<div class="form-container">
+<mat-card class="bg-card mat-elevation-z19">
+  <form (submit)="register()" class="border border-primary">
+    <mat-form-field>
+      <input [(ngModel)]="username" name="username" matInput placeholder="Your UserName" type="text" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="email" name="email" matInput placeholder="Your Email" type="email" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="password" name="password" matInput placeholder="Your Password" type="password" required>
+    </mat-form-field>
 
-
-
-
-<!-- <div >
-    <form #contactForm="ngForm">
-        <div>
-            <input type="text" [(ngModel)]="name" name="name" placeholder="name">
-        </div>
-      <div>
-        
-        <input type="text" [(ngModel)]="email" name="email" placeholder="email">
-      </div>
-      <div>
-        
-        <input type="password"[(ngModel)]="password" name="password" placeholder="password">
-      </div>
-  
-      <div>
-        <button type="submit" (click)="register()">Submit</button>
-      </div>
-  
-    </form>
-  </div>
-   -->
+    <button mat-raised-button color="primary">Register</button>
+  </form>
+</mat-card>
+</div>
+<router-outlet></router-outlet>
+</html>

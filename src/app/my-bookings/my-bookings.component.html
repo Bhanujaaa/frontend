@@ -1,0 +1,39 @@
+<html>
+<mat-toolbar color="primary" class="navbar" style="position:static;">
+    <div>Movie Mix</div>
+    <div>
+      <span routerLink='/user/show' style="cursor: pointer;">Book</span>
+      <span routerLink='/details' style="cursor: pointer;">My Bookings</span>
+      <span class="HomePage"  style="cursor: pointer;" routerLink="/user/home" (click)="ser.LogOut()">LogOut</span>
+    </div>
+  
+  </mat-toolbar>
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly" fxLayoutGap="16px grid">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let c of book">
+  <mat-card class="example-card mat-elevation-z19" >
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{c.movieId.title}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <img mat-card-image class="imgs" src="{{c.image}}" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <p>
+       <strong>Cinema:</strong> {{c.cinemaId.name}}<br>
+       <strong>Seats Booked:</strong> {{c.seats}}<br>
+       <strong>Total cost: </strong>{{c.total}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- <button mat-button>LIKE</button> -->
+      <button mat-button (click)="Delete(c._id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+  </div>
+</div>
+</html>
+  
+  
+  

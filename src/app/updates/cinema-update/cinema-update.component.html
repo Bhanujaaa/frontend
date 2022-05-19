@@ -1,0 +1,99 @@
+<!-- <p>cinema-update works!</p> -->
+<div class="form-container" *ngIf="this.ser.cineAdd">
+    <!-- <mat-card class="bg-card mat-elevation-z19"> -->
+    <form class="border border-primary">
+      <div mat-dialog-title>
+        Add New Cinema
+      </div>
+      <mat-dialog-content>
+       
+        <mat-form-field>
+            <input [(ngModel)]="name" name="name" matInput placeholder="Theater Name" type="text" required>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <!-- <input [(ngModel)]="movieId" name="movieId" matInput placeholder="Movie Id" type="text" required> -->
+            <mat-label>Select Movie</mat-label>
+            <mat-select class="form-control" fromControlName="movieId" [(ngModel)]="movieId" name="movieId">
+                <mat-option *ngFor="let m of movieN" [value]="m._id">{{m.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Select City</mat-label>
+            <mat-select class="form-control" fromControlName="city" [(ngModel)]="city" name="city">
+                <mat-option *ngFor="let c of cityN" [value]="c._id">{{c.cityName}}</mat-option>
+            </mat-select>
+            <!-- <input [(ngModel)]="city" name="city" matInput placeholder="City" type="text" required> -->
+    
+          </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="address" name="address" matInput placeholder="Address" type="text" required>
+    
+          </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="image" name="image" matInput placeholder="image" type="text" required>
+    
+          </mat-form-field>
+  
+  
+  
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button  mat-dialog-close (click)="AddCine()" color="primary">ADD</button>
+      </mat-dialog-actions>
+    </form>
+    <!-- </mat-card> -->
+  </div>
+  
+  <div class="form-container" *ngIf="this.ser.cineEdit">
+    <!-- <mat-card class="bg-card mat-elevation-z19"> -->
+    <form class="border border-primary">
+      <div mat-dialog-title>
+        Edit Cinema
+      </div>
+      <mat-dialog-content>
+        <mat-form-field>
+          <input [(ngModel)]="name" name="name" matInput placeholder="Theater Name" type="text" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Select Movie</mat-label>
+          <mat-select class="form-control" fromControlName="movieId" [(ngModel)]="movieId" name="movieId">
+              <mat-option *ngFor="let m of movieN" [value]="m._id">{{m.title}}</mat-option>
+          </mat-select> 
+          <!-- <input [(ngModel)]="movieId" name="movieId" matInput placeholder="Movie Id" type="text" required> -->
+  
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Select City</mat-label>
+          <mat-select class="form-control" fromControlName="city" [(ngModel)]="city" name="city">
+              <mat-option *ngFor="let c of cityN" [value]="c._id">{{c.cityName}}</mat-option>
+          </mat-select>
+          <!-- <input [(ngModel)]="city" name="city" matInput placeholder="City" type="text" required> -->
+  
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="address" name="address" matInput placeholder="Address" type="text" required>
+  
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="image" name="image" matInput placeholder="image" type="text" required>
+  
+        </mat-form-field>
+  
+  
+  
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button  mat-dialog-close  (click)="editCine()" color="primary">ADD</button>
+      </mat-dialog-actions>
+    </form>
+    <!-- </mat-card> -->
+  </div>
+  <div class="delete" *ngIf="this.ser.cineDelete">
+    <!-- <h2 mat-dialog-title>Confirmation</h2> -->
+  <mat-dialog-content>Are you sure to Delete</mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-raised-button color="primary" (click)="deleteCine()" mat-dialog-close mat-dialog-close="Ok">Confirm</button>
+      <button mat-raised-button  mat-dialog-close mat-dialog-close="No">Cancel</button>
+  </mat-dialog-actions>
+    </div>

@@ -1,0 +1,55 @@
+<html>
+<mat-toolbar color="primary" class="navbar">
+  <div>Movie Mix</div>
+  <div>
+    <span routerLink='/details' style="cursor: pointer;">My Bookings</span>
+    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="ser.LogOut()">LogOut</span>
+  </div>
+</mat-toolbar>
+
+<div class="mat-elevation-z8">
+
+    <mat-table [dataSource]="reserveDetails" class="table">
+      <!-- Position Column -->
+      <ng-container matColumnDef="cinemaId">
+        <mat-header-cell *matHeaderCellDef width="20%"><h1> Booking Details</h1></mat-header-cell>
+        <!-- <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell> -->
+        <mat-cell *matCellDef="let element"><br>TheaterName<br>MovieName<br>UserId<br>Each TicketPrice<br>Number Of Tickets
+        <br>Total Cost<br></mat-cell>
+    
+      </ng-container>
+   
+      <ng-container matColumnDef="movieId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+        <mat-cell *matCellDef="let element"><br>-----<br>-----<br>-----<br>-----<br>-----</mat-cell>
+      </ng-container>
+     
+      <!-- Name Column -->
+      <ng-container matColumnDef="ticketPrice">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+        <mat-cell *matCellDef="let element"><br>{{element.cinemaId.name}}<br>{{element.movieId.title}}<br>{{element.UserId.username}}<br>{{element.showId.ticketPrice}}<br>{{element.seats}} 
+        <br>{{element.total}}<br></mat-cell>
+       
+      </ng-container>
+  
+      <!-- Weight Column -->
+     
+  
+      <!-- Symbol Column -->
+      <!-- <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="seats">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell> -->
+        <!-- <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell> -->
+      <!-- </ng-container> -->
+  
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row  *matRowDef="let row; columns: columns;"></mat-row>
+      
+    </mat-table>
+    <button mat-raised-button color="primary" style="justify-content: center;margin-left: 50%;" (click)="home()">OK</button>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+  </div>
+  </html>

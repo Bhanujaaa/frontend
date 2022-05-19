@@ -1,13 +1,13 @@
-<div class="home">
-    <div class="logo">
-        Home
+<html>
+<mat-toolbar  class="navbar">
+    <div>Movie Mix</div>
+    <div>
+      <span class="HomePage"  style="cursor: pointer;" routerLink="/user/home">Home</span>
+      <span class="LoginPage" style="cursor: pointer;" routerLink="/user/login">Login</span>
+      <span class="RegisterPage" style="cursor: pointer;" routerLink="/user/register">Register</span>
     </div>
-    <nav>
-        <div class="homepage-items">
-           
-            <button class="homepage-item" routerLink="/user/login">login</button>
-            <button class="homepage-item" routerLink="/user/register">register</button>
-            </div>
-    </nav>
-  </div>
+  
+  </mat-toolbar>
   <router-outlet></router-outlet>
+  
+  </html>

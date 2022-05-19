@@ -1,0 +1,45 @@
+*{
+    height: auto;
+  }
+  .example-card {
+      max-width: 400px;
+    }
+    
+    .example-header-image {
+      background-size: cover;
+    }
+   
+      body{
+        background-color: blue;
+      }
+    html{
+      background-image:url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+      background-size:contain;
+       background-attachment:fixed!important;
+       width: 100%;
+    }
+    .content {
+      padding: 16px;
+    }
+    
+    .content > mat-card {
+      margin-bottom: 16px;
+    }
+    .example-card {
+      max-width: 400px;
+    }
+    
+  .navbar{
+    justify-content: space-between;
+    position: sticky !important;
+    color: white;
+    width: 100%;
+    background-image: url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+    top: 0px;
+    overflow: hidden;
+    background-size: cover;
+    z-index: 9999;
+    }
+    span{
+      padding-right: 1rem;
+    }
