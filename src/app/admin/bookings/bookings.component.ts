@@ -16,5 +16,10 @@ public book:any
       this.book=data
           })
   }
+  public deleteBook(id:string){
+    this.ser.deleteReserve(id).subscribe((data)=>{
+this.ngOnInit();
+    })
+  }
 
 }

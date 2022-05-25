@@ -15,23 +15,25 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class SeatsBookingComponent implements OnInit {
   public rows: any;
   public seats: any;
+  public seatno: any
   // public seatsselected
   public seatAvailable: any;
   private reservedSeats: any;
   // public cinema:any
-  public show:any
-  public left!:number;
-  public fullSeats:any
+  public show: any
+  public left!: number;
+  public fullSeats: any
   // private refresh!: EventEmitter<void>;
   @Output()
   refresh: EventEmitter<void> = new EventEmitter();
 
   constructor(public seatService: ServiceService, private dialog: MatDialog,
-    private snackBar: MatSnackBar,private router:Router ) { }
+    private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.rows = [];
     this.seats = [];
+    this.seatno = [];
     this.loadData();
     this.refresh.subscribe(() => {
       this.loadData();
@@ -39,38 +41,38 @@ export class SeatsBookingComponent implements OnInit {
 
   }
   // [seatNum:A1
-// isSelected:true]
-// [seatNum:A2
-// isSelected:false]
+  // isSelected:true]
+  // [seatNum:A2
+  // isSelected:false]
 
 
   public loadData() {
-    let id=this.seatService.put()
+    let id = this.seatService.put()
     this.seatService.getSeats(id).subscribe((data: any) => {
-      this.show=data
+      this.show = data
       // console.log(data)
       // for(let i=0;i<data.length;i++){
-        this.seatAvailable=data.seats
-        console.log(data.seats)
-      
+      this.seatAvailable = data.seats
+      console.log(data.seats)
+
       // }
       if (this.seatAvailable && this.seatAvailable.length !== 0) {
-      for(let j=0;j<this.seatAvailable.length;j++){
-        let seatName=this.seatAvailable[j].seatNum
-        this.rows.push(seatName[0])
+        for (let j = 0; j < this.seatAvailable.length; j++) {
+          let seatName = this.seatAvailable[j].seatNum
+          this.rows.push(seatName[0])
           this.seats.push(seatName[1])
           let unique = this.rows.filter((item: any, i: any, ar: string | any[]) => ar.indexOf(item) === i);
           this.rows = unique
           let unique1 = this.seats.filter((item: any, i: any, ar: string | any[]) => ar.indexOf(item) === i);
           this.seats = unique1
-          
 
+
+        }
+        this.getReservedSeats()
       }
-      this.getReservedSeats()
-    }
-    else{
-      this.addSeatDetails();
-    }
+      else {
+        this.addSeatDetails();
+      }
       // if (data && data.length !== 0) {
       //   // this.seatAvailable = data;
       //   for (let i = 0; i < data.length; i++) {
@@ -127,20 +129,32 @@ export class SeatsBookingComponent implements OnInit {
   }
   public seatSelect(seatNo: String) {
     this.toggleSeatSelect(seatNo);
-  
+    console.log(seatNo)
+    console.log("above is the seat number")
+
 
   }
   public toggleSeatSelect(seatNo: String) {
     if (seatNo) {
       let toggleSeat = this.seatAvailable.filter((value: { seatNum: String; }) => value.seatNum === seatNo);
       toggleSeat[0].isSelected = !toggleSeat[0].isSelected;
-      if(toggleSeat[0].isSelected){
+      if (toggleSeat[0].isSelected) {
         console.log("selected")
+        // console.log(seatNo)
+        this.seatno.push(seatNo)
+
 
       }
+      if (!toggleSeat[0].isSelected) {
+        const index = this.seatno.indexOf(seatNo, 0);
+        if (index > -1) {
+          this.seatno.splice(index, 1);
+        }
+      }
+      // console.log(this.seatno)
     }
   }
-  private submitBooking(selectedSeats: any,seatsBooked:any) {
+  private submitBooking(selectedSeats: any, seatsBooked: any) {
     console.log('submitted');
     console.log(selectedSeats)
     this.seatService.bookSeat(selectedSeats).subscribe(() => {
@@ -148,48 +162,51 @@ export class SeatsBookingComponent implements OnInit {
     });
     // this.freeSeats();
   }
-  public freeSeat(){
+  public freeSeat() {
     console.log(this.seatAvailable)
     const selectedSeats = this.seatAvailable.filter((value: { isSelected: true; }) => value.isSelected);
-    const reserved=this.seatAvailable.filter((value: { isSelected: false; }) => !value.isSelected);
-    this.fullSeats=(selectedSeats.length+reserved.length)
+    const reserved = this.seatAvailable.filter((value: { isSelected: false; }) => !value.isSelected);
+    this.fullSeats = (selectedSeats.length + reserved.length)
     console.log(reserved.length)
-    this.seatService.seatUpdate(this.fullSeats,this.show._id).subscribe(()=>{
+    this.seatService.seatUpdate(this.fullSeats, this.show._id).subscribe(() => {
       console.log("freeseatupdate")
-      this.seatService.release(selectedSeats).subscribe(()=>{
+      console.log(selectedSeats)
+      this.seatService.release(selectedSeats).subscribe(() => {
         console.log("freed")
       })
     })
-    
+
   }
-  public Booked(seatsBooked:number){
+  public Booked(seatsBooked: number) {
     // this.seatService.reserve(this.cinema._id).subscribe((data)=>{
-      let price=this.show.ticketPrice
-      let cost=seatsBooked*price
-      let Booked=seatsBooked
-      let remain=this.show.seatsAvailable
-      let leftout=remain-Booked
-      console.log(leftout);console.log(seatsBooked)
-      this.seatService.changeCinemaSeat(leftout,this.show._id)
-      console.log(this.show.cinemaId)
-      this.seatService.confirm(seatsBooked,price,cost,this.show._id,this.show.cinemaId,this.show.movieId,this.seatService.UserId).subscribe((data)=>{
-        console.log(data)
-        console.log(data._id)
-        this.seatService.getReserveId(data._id,cost)
-        // console.log("sdafllsfjlsjadklfjklsafioeawfiowefjsdn")
-     
-        this.router.navigateByUrl('user/reserved')
-        
+    let price = this.show.ticketPrice
+    let cost = seatsBooked * price
+    let Booked = seatsBooked
+    let remain = this.show.seatsAvailable
+    let leftout = remain - Booked
+    console.log(leftout); console.log(seatsBooked)
+    this.seatService.changeCinemaSeat(leftout, this.show._id)
+    console.log(this.show.cinemaId)
+    this.seatService.confirm(seatsBooked, price, cost, this.show._id, this.show.cinemaId, this.show.movieId, this.seatService.UserId,this.seatno).subscribe((data) => {
+      console.log(data)
+      console.log(data._id)
+      this.seatService.getReserveId(data._id, cost)
+      // console.log("sdafllsfjlsjadklfjklsafioeawfiowefjsdn")
+
+      this.router.navigateByUrl('user/reserved')
+
 
     })
 
   }
   public openDialog(): void {
     const selectedSeats = this.seatAvailable.filter((value: { isSelected: true; }) => value.isSelected);
-    const seatsBooked=selectedSeats.length - this.reservedSeats.length
-    let price=this.show.ticketPrice
-    let cost=seatsBooked*price
-    this.seatService.costuu=cost
+    const seatsBooked = selectedSeats.length - this.reservedSeats.length
+    let price = this.show.ticketPrice
+    console.log("selected seats are given below")
+    console.log(this.seatno)
+    let cost = seatsBooked * price
+    this.seatService.costuu = cost
     // used to check if any new seat has been selected or not
     // console.log(selectedSeats.length+"ghjj")
     if (selectedSeats.length === this.reservedSeats.length) {
@@ -197,23 +214,23 @@ export class SeatsBookingComponent implements OnInit {
       return;
     }
     // this.seatService.openConfirmDialog();
-    let dialogRefe=this.dialog.open(DialogComponent);
-    dialogRefe.afterClosed().subscribe(result=>{
+    let dialogRefe = this.dialog.open(DialogComponent);
+    dialogRefe.afterClosed().subscribe(result => {
       // console.log(`${result}`)
-      if(`${result}`=="Ok"){
-console.log("Ok");
-this.sodhi()
+      if (`${result}` == "Ok") {
+        console.log("Ok");
+        this.last()
       }
     })
-    
+
   }
-  public sodhi(){
+  public last() {
     const selectedSeats = this.seatAvailable.filter((value: { isSelected: true; }) => value.isSelected);
     console.log("hi dialog")
-    const seatsBooked=selectedSeats.length - this.reservedSeats.length
-        console.log(selectedSeats.length - this.reservedSeats.length + "seats")
-        this.submitBooking(selectedSeats,seatsBooked);
-        this.Booked(seatsBooked)
+    const seatsBooked = selectedSeats.length - this.reservedSeats.length
+    console.log(selectedSeats.length - this.reservedSeats.length + "seats")
+    this.submitBooking(selectedSeats, seatsBooked);
+    this.Booked(seatsBooked)
   }
 
 }

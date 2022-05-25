@@ -1,5 +1,36 @@
 <html>
-<mat-toolbar color="primary" class="navbar" style="position:static;">
+  
+    <div> 
+      <mat-toolbar class="navbar" color="primary">
+        <div fxShow="true" fxHide.gt-sm="true">
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+    
+        <a mat-button class="companyName" routerLink="/">
+          <span>Movie Mix</span>
+        </a>
+        <span class="example-spacer"></span>
+        <div fxShow="true" fxHide.lt-md="true">
+          <a mat-button routerLink='/user/show'>Book</a>
+          <a mat-button routerLink='/details'>My Bookings</a>
+          <a mat-button routerLink="/user/home" (click)="ser.LogOut()">LogOut</a>
+        </div>
+    
+      </mat-toolbar>
+      <mat-sidenav-container fxFlexFill class="example-container">
+    
+        <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+          <div fxLayout="column">
+            <a mat-button routerLink='/user/show'>Book</a>
+          <a mat-button routerLink='/details'>My Bookings</a>
+          <a mat-button routerLink="/user/home" (click)="ser.LogOut()">LogOut</a>
+          </div>
+        </mat-sidenav>
+        <!-- <mat-sidenav-content fxFlexFill> -->
+    
+<!-- <mat-toolbar color="primary" class="navbar" style="position:static;">
   <div>Movie Mix</div>
   <div>
     <span routerLink='/user/show' style="cursor: pointer;">Book</span>
@@ -7,7 +38,7 @@
     <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="ser.LogOut()">LogOut</span>
   </div>
 
-</mat-toolbar>
+</mat-toolbar> -->
 
 <div class="full">
   <mat-card class="bg-card anup">
@@ -27,6 +58,7 @@
   <button (click)="search()"  mat-raised-button color="primary">Search</button>
 </mat-card>
 </div>
+</mat-sidenav-container>
 
   <!-- <div>
     <mat-label>Select-city</mat-label>
@@ -86,12 +118,7 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 <div class="content">
   <div fxLayout="row warp" fxLayoutAlign="space-evenly" fxLayoutGap="16px grid">
@@ -110,11 +137,16 @@
   </mat-card-content>
   <mat-card-actions>
     <!-- <button mat-button>LIKE</button> -->
-    <button mat-button (click)="bookShow(c._id)">SELECT</button>
+    <button mat-button class="button" (click)="bookShow(c._id)">SELECT</button>
   </mat-card-actions>
 </mat-card>
 </div>
 </div>
 </div>
+<!-- </mat-sidenav-content> -->
+
+</div>
+
+
 </html>
 

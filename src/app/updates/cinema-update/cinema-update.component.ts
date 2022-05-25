@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/admin/admin-service.service';
 import { ServiceService } from 'src/app/service.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-cinema-update',
   templateUrl: './cinema-update.component.html',
@@ -18,7 +18,7 @@ public image!:string
 public address!:string
 public cityN:any
 public movieN:any
-  constructor(public ser:AdminServiceService,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService,public service:ServiceService,private toast:NgToastService) { }
 
   ngOnInit(): void {
     this.service.getCity().subscribe((data: any) => {
@@ -56,7 +56,7 @@ public movieN:any
       address:this.address
     }
     this.ser.postCine(credentials).subscribe((data)=>{
-console.log(data)
+      this.toast.success({detail:"success Message",summary:"Cinema is Added!!",duration:5000})
     })
   }
   editCine(){
@@ -71,13 +71,13 @@ console.log(data)
     }
     let _id=this.ser.cineEditId
     this.ser.editCine(credentials,_id).subscribe((data)=>{
-      
+      this.toast.success({detail:"success Message",summary:"Updated Successfully!!",duration:5000})
     })
   }
   deleteCine(){
     let id=this.ser.cineDeleteId
     this.ser.deleteCine(id).subscribe((data)=>{
-        console.log(data)
+      this.toast.success({detail:"success Message",summary:"Cinema is Deleted!!",duration:5000})
       })
 
   }

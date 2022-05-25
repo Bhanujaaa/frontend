@@ -1,5 +1,44 @@
 <html>
-<mat-toolbar  class="navbar">
+  <div>
+    <mat-toolbar color="primary">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+  
+      <a mat-button class="companyName">
+        <span>Movie Mix</span>
+      </a>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/admin/movie">Movies</a>
+        <a mat-button routerLink="/admin/cinema">Cinemas</a>
+        <a mat-button routerLink="/admin/location">Locations</a>
+        <a mat-button routerLink="/admin/showss">Shows</a>
+        <a mat-button routerLink="/admin/seat">Seats</a>
+        <a mat-button routerLink="/admin/book">Bookings</a>
+        <a mat-button routerLink="/admin/user">Users</a>
+        <a mat-button routerLink="/user/home" (click)="service.LogOut()">LogOut</a>
+        
+      </div>
+  
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+  
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <a mat-button routerLink="/admin/movie">Movies</a>
+          <a mat-button routerLink="/admin/cinema">Cinemas</a>
+          <a mat-button routerLink="/admin/location">Locations</a>
+          <a mat-button routerLink="/admin/showss">Shows</a>
+          <a mat-button routerLink="/admin/seat">Seats</a>
+          <a mat-button routerLink="/admin/book">Bookings</a>
+          <a mat-button routerLink="/admin/user">Users</a>
+          <a mat-button routerLink="/user/home" (click)="service.LogOut()">LogOut</a>
+        </div>
+      </mat-sidenav>
+<!-- <mat-toolbar  class="navbar">
   <div>Movie Mix</div>
   <div>
     <span  style="cursor: pointer;" routerLink="/admin/movie">Movies</span>
@@ -11,7 +50,7 @@
     <span style="cursor: pointer;" routerLink="/admin/user">Users</span>
     <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="service.LogOut()">LogOut</span>
   </div>
-</mat-toolbar>
+</mat-toolbar> -->
 <button mat-raised-button color="primary" (click)="addShow()">ADD</button>
 
   
@@ -22,25 +61,31 @@
       <div  fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let s of show">
         <mat-card class="example-card mat-elevation-z19">
           <mat-card-header>
+            <img mat-card-avatar class="example-header-image" src="{{s.movieId.image}}">
             <mat-card-title>{{s.startAt}}</mat-card-title>
           </mat-card-header>
           <!-- <img mat-card-image class="imgs" src="{{m.image}}"> -->
           <mat-card-content>
-            <p>
-              <strong>Movie Name: </strong>{{s.movieId.title}}<br><strong>Show In: </strong>{{s.cinemaId.name}}<br><strong>TicketPrice: </strong>{{s.ticketPrice}}<br><strong>seatsAvailable: </strong>{{s.seatsAvailable}}
+            <div>
+              Movie Name: {{s.movieId.title}}<br>Show In: {{s.cinemaId.name}}<br>TicketPrice: {{s.ticketPrice}}<br>seatsAvailable: {{s.seatsAvailable}}
               <!-- <div *ngFor="let c of s.seats">seatNum: {{c.seatNum}} </div> -->
-            </p>
+            </div>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button (click)="freeSeat(s._id)" id="freeSeats">Free All The Seats</button>
-            <button mat-button (click)="editShow(s._id)" >Edit</button>
-            <button mat-button (click)="deleteShow(s._id)" >Delete</button>
+            <button mat-raised-button color="primary" (click)="freeSeat(s._id)" id="freeSeats">Free All The Seats</button>
+            <button mat-raised-button class="button1" (click)="editShow(s._id)" >Edit</button>
+            <!-- <button mat-fab color="primary" (click)="deleteShow(s._id)" aria-label="Example icon button with a delete icon">
+              <mat-icon>delete</mat-icon>
+            </button> -->
+            <button mat-raised-button class="button1" (click)="deleteShow(s._id)" >Delete</button>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
   </div>
-  
+    </mat-sidenav-container>
+    </div>
+    
   
   
   </html>

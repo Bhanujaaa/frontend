@@ -4,6 +4,7 @@ import { AdminServiceService } from '../admin-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdatemovieComponent } from 'src/app/changesrout/updatemovie/updatemovie.component';
 import { ServiceService } from 'src/app/service.service';
+import {NgToastService} from 'ng-angular-popup';
 
 @Component({
   selector: 'app-movies',
@@ -12,11 +13,11 @@ import { ServiceService } from 'src/app/service.service';
 })
 export class MoviesComponent implements OnInit {
 public movie:any 
-  constructor(public ser:AdminServiceService, private dialog: MatDialog,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService, private dialog: MatDialog,public service:ServiceService,private toast:NgToastService) { }
 
   ngOnInit(): void {
     this.ser.getMovies().subscribe((data)=>{
-
+      
 this.movie=data
     })
   }
@@ -26,7 +27,10 @@ this.movie=data
     dialogRef.afterClosed().subscribe(result=>{
 console.log(result)
 this.ser.movieAdd=false
+
 this.ngOnInit();
+
+    
     })
     
   }
@@ -38,6 +42,7 @@ this.ngOnInit();
       this.ser.movieEdit=false
       console.log(result)
       this.ngOnInit();
+     
     })
     
 
@@ -50,6 +55,8 @@ this.ngOnInit();
       this.ser.movieDelete=false 
       console.log(result)
       this.ngOnInit();
+     
+    
     })
     
   }

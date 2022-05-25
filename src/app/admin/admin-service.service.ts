@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminServiceService {
-public url:string='http://34.208.61.254:8080'
+public url:string='http://54.200.25.127:8080'
+// public url:string='http://localhost:8080'
+
 public movieAdd:boolean=false
 public movieEdit:boolean=false
 public movieDelete:boolean=false
@@ -34,87 +37,90 @@ public seatDelete:boolean=false
 public seatEditId:any 
 public seatDeleteId:any
   constructor(public http:HttpClient) { }
-  getMovies(){
+  getMovies():Observable<any>{
     return this.http.get<any>(`${this.url}/movies`)
     }
-    getMoviesId(id:string){
+    getMoviesId(id:string):Observable<any>{
       return this.http.get<any>(`${this.url}/movies/${id}`)
     }
-    postMovies(movie:any){
+    postMovies(movie:any):Observable<any>{
       return this.http.post<any>(`${this.url}/movies`,{movie})
     }
-    editMovies(movie:any,id:string){
+    editMovies(movie:any,id:string):Observable<any>{
       return this.http.put<any>(`${this.url}/movies/${id}`,{movie})
     }
-    deleteMovies(id:string){
+    deleteMovies(id:string):Observable<any>{
       return this.http.delete<any>(`${this.url}/movies/${id}`)
     }
-    getCine(){
+    getCine():Observable<any>{
       return this.http.get<any>(`${this.url}/cinemas`)
     }
-    getCineId(id:string){
+    getCineId(id:string):Observable<any>{
       return this.http.get<any>(`${this.url}/cinemas/ide/${id}`)
     }
-    postCine(cine:any){
+    postCine(cine:any):Observable<any>{
       return this.http.post<any>(`${this.url}/cinemas`,{cine})
     }
-    editCine(cine:any,id:string){
+    editCine(cine:any,id:string):Observable<any>{
       return this.http.patch<any>(`${this.url}/cinemas/${id}`,{cine})
     }
-    deleteCine(id:string){
+    deleteCine(id:string):Observable<any>{
       return this.http.delete<any>(`${this.url}/cinemas/${id}`)
     }
-    getCity(){
+    getCity():Observable<any>{
       return this.http.get<any>(`${this.url}/getCity`)
     }
-    getCityId(id:string){
+    getCityId(id:string):Observable<any>{
       return this.http.get<any>(`${this.url}/getCity/${id}`)
     }
-    postCity(city:any){
+    postCity(city:any):Observable<any>{
       return this.http.post<any>(`${this.url}/addCity`,{city})
     }
-    editCity(city:any,id:string){
+    editCity(city:any,id:string):Observable<any>{
       return this.http.patch<any>(`${this.url}/updateCity/${id}`,{city})
     }
-    deleteCity(id:string){
+    deleteCity(id:string):Observable<any>{
       return this.http.delete<any>(`${this.url}/deleteCity/${id}`)
     }
-    getUser(){
+    getUser():Observable<any>{
       return this.http.get<any>(`${this.url}/users`)
     }
    
-    deleteUser(id:string){
+    deleteUser(id:string):Observable<any>{
       return this.http.delete<any>(`${this.url}/users/${id}`)
     }
-    getShow(){
+    getShow():Observable<any>{
       return this.http.get<any>(`${this.url}/showtimes`)
       }
-      getShowId(id:string){
+      getShowId(id:string):Observable<any>{
         return this.http.get<any>(`${this.url}/showtimes/${id}`)
       }
-      postShow(show:any){
+      postShow(show:any):Observable<any>{
         return this.http.post<any>(`${this.url}/showtimes`,{show})
       }
-      editShow(show:any,id:string){
+      editShow(show:any,id:string):Observable<any>{
         return this.http.patch<any>(`${this.url}/showtimes/${id}`,{show})
       }
-      deleteShow(id:string){
+      deleteShow(id:string):Observable<any>{
         return this.http.delete<any>(`${this.url}/showtimes/${id}`)
       }
-      getSeat(){
+      getSeat():Observable<any>{
         return this.http.get<any>(`${this.url}/seats`)
         }
-        postSeat(seat:any){
+        postSeat(seat:any):Observable<any>{
           return this.http.post<any>(`${this.url}/seats`,{seat})
         }
-        editSeat(seat:any,id:string){
+        editSeat(seat:any,id:string):Observable<any>{
           return this.http.patch<any>(`${this.url}/seats/${id}`,{seat})
         }
-        deleteSeat(id:string){
+        deleteSeat(id:string):Observable<any>{
           return this.http.delete<any>(`${this.url}/seats/${id}`)
         }
-        getReserve(){
+        getReserve():Observable<any>{
           return this.http.get<any>(`${this.url}/reservations`)
+        }
+        deleteReserve(id:string):Observable<any>{
+          return this.http.delete<any>(`${this.url}/reservations/${id}`)
         }
 
 }

@@ -14,7 +14,11 @@ html{
     margin-bottom: 16px;
   }
   .example-card {
-    max-width: 400px;
+    color: white;
+    /* background:transparent; */
+    background-color: rgba(255, 255, 255, .15)!important;  
+    backdrop-filter: blur(5px)!important;
+    /* max-width: 400px; */
   }
   
   .example-header-image {
@@ -23,7 +27,12 @@ html{
     ); */
     background-size: cover;
   }
-  
+  .button1{
+    color: white;
+    /* background:transparent; */
+    background-color: rgba(255, 255, 255, .15)!important;  
+    backdrop-filter: blur(5px)!important;
+  }
   .navbar{
     justify-content: space-between;
   position: sticky !important;
@@ -43,3 +52,70 @@ html{
     height: 35vh;
   object-fit: cover;
   }
+  .mat-toolbar{
+    height: 9vh;  
+    justify-content: space-between;
+      position: sticky !important;
+      color: white;
+      width: 100%;
+      background-image: url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+      top: 0px;
+      overflow: hidden;
+      background-size: cover;
+      z-index: 9999;
+      
+    }
+    .companyName{
+      font-size: 150%;
+    }
+    div {
+      overflow: inherit;
+    }
+    /* @media (max-width:700px) { */
+    .mat-sidenav-container{
+      background-size:contain;
+      background-attachment: fixed!important;
+    
+      /* width:100vw!important; */
+      /* height: 30vh !important; */
+      /* min-height: 91vh !important; */
+     /* padding-top: 20px; */
+     /* margin-top: -9px; */
+      background-image:url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+    
+       /* background-position: unset!important; */
+       /* background-size:contain; */
+     
+     
+    }
+  /* } */
+    
+    a{
+      text-decoration: none;
+      font-size: 110%;
+      white-space: normal;
+    }
+    
+    button{
+      font-size: 110%;
+      /* min-width: min-content; */
+    }
+    
+    .example-icon {
+      padding: 0 14px;
+    }
+    
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+    
+    .mat-sidenav-content{
+      /* background-image: url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=); */
+        /* font-size: 200%; */
+        color:white;
+        text-align: center;
+    }
+    .mat-sidenav{
+      color:white;
+      background-image: url(https://media.istockphoto.com/photos/blue-stage-curtain-texture-background-picture-id1134297145?k=20&m=1134297145&s=612x612&w=0&h=dX-vFP3QRoCedFb30DSydeDS0EWXrHukX8_nAqGGXgE=);
+    }

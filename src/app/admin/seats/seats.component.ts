@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
 import { SeatUpdateComponent } from 'src/app/updates/seat-update/seat-update.component';
 import { AdminServiceService } from '../admin-service.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-seats',
@@ -12,7 +13,7 @@ import { AdminServiceService } from '../admin-service.service';
 })
 export class SeatsComponent implements OnInit {
 public seat:any
-  constructor(public ser:AdminServiceService, public dialog:MatDialog, public router:Router,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService, public dialog:MatDialog, private toast:NgToastService,public router:Router,public service:ServiceService) { }
 
   ngOnInit(): void {
     this.ser.getSeat().subscribe((data)=>{
@@ -30,6 +31,7 @@ console.log(result)
 this.ser.seatAdd=false
 this.ngOnInit();
     })
+   
     
   }
  

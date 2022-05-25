@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ServiceService } from 'src/app/service.service';
 import { ShowUpdateComponent } from 'src/app/updates/show-update/show-update.component';
 import { AdminServiceService } from '../admin-service.service';
+import { NgToastModule, NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-showss',
@@ -13,7 +14,7 @@ export class ShowssComponent implements OnInit {
 public show:any
 public seatAvailable:any
 public fullSeats:any
-  constructor(public ser:AdminServiceService, public dialog:MatDialog,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService, private toast:NgToastService,public dialog:MatDialog,public service:ServiceService) { }
 
   ngOnInit(): void {
     this.ser.getShow().subscribe((data)=>{
@@ -26,25 +27,33 @@ public fullSeats:any
    freeSeat(id:string){
      this.ser.getShowId(id).subscribe((data)=>{
        this.seatAvailable=data.seats
-      // console.log(this.seatAvailable)
-      })
+      console.log(data)
+      console.log(this.seatAvailable)
+      
+      console.log("seats are")
+      console.log("seatsare",this.seatAvailable)
     if(this.seatAvailable){
     const selectedSeats = this.seatAvailable.filter((value: { isSelected: true; }) => value.isSelected);
     const reserved=this.seatAvailable.filter((value: { isSelected: false; }) => !value.isSelected);
     this.fullSeats=(selectedSeats.length+reserved.length)
     console.log(reserved.length)
+    console.log("reserved seats are",reserved)
+console.log("not reserved",selectedSeats)
     // console.log()
     // console.log(this.show._id)
     console.log(id)
     console.log("show id above")
     this.service.seatUpdate(this.fullSeats,id).subscribe(()=>{
       console.log("freeseatupdate")
+      console.log(selectedSeats)
       this.service.release(selectedSeats).subscribe(()=>{
         console.log("freed")
       })
     })
     this.ngOnInit();
+    this.toast.success({detail:"success Message",summary:"Seats are freed!!",duration:5000})
   }
+})
     
   }
   addShow(){
@@ -54,6 +63,7 @@ public fullSeats:any
 console.log(result)
 this.ser.showAdd=false
 this.ngOnInit();
+
     })
     
   }
@@ -65,6 +75,7 @@ this.ngOnInit();
       this.ser.showEdit=false
       console.log(result)
       this.ngOnInit();
+    
     })
 
   }
@@ -76,6 +87,7 @@ this.ngOnInit();
       this.ser.showDelete=false 
       console.log(result)
       this.ngOnInit();
+     
     })
   
   }

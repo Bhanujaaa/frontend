@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/admin/admin-service.service';
 import { ServiceService } from 'src/app/service.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-movie-update',
@@ -16,7 +17,7 @@ public director!:string;
 public cast!:string;
 public description!:string;
 public duration!:string
-  constructor(public ser:AdminServiceService) { }
+  constructor(public ser:AdminServiceService,private toast:NgToastService) { }
 
   ngOnInit(): void {
     if(this.ser.movieEdit==true){
@@ -46,7 +47,7 @@ public duration!:string
       image:this.image
     }
     this.ser.postMovies(credentials).subscribe((data)=>{
-console.log(data)
+      this.toast.success({detail:"success Message",summary:"Movie is Added!!",duration:5000})
     })
   }
   editMovie(){
@@ -62,13 +63,13 @@ console.log(data)
     }
     let _id=this.ser.movieEditId
     this.ser.editMovies(credentials,_id).subscribe((data)=>{
-      
+      this.toast.success({detail:"success Message",summary:"Updated successfully!!",duration:5000})
     })
   }
   deleteMovie(){
     let id=this.ser.movieDeleteId
     this.ser.deleteMovies(id).subscribe((data)=>{
-        console.log(data)
+      this.toast.success({detail:"success Message",summary:"Movie is Deleted!!",duration:5000})
       })
 
   }

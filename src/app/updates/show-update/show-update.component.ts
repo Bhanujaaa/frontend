@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/admin/admin-service.service';
 import { ServiceService } from 'src/app/service.service';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-show-update',
   templateUrl: './show-update.component.html',
@@ -18,7 +18,7 @@ public movieN:any
 public cineN:any
 public seatN:any
 
-  constructor(public ser:AdminServiceService,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService,public service:ServiceService,private toast:NgToastService) { }
 
   ngOnInit(): void {
     this.service.getMovies().subscribe((data:any)=>{
@@ -57,7 +57,7 @@ public seatN:any
    
     }
     this.ser.postShow(credentials).subscribe((data)=>{
-console.log(data)
+      this.toast.success({detail:"success Message",summary:"Show is Added!!",duration:5000})
     })
   }
   editShow(){
@@ -71,13 +71,13 @@ console.log(data)
     }
     let _id=this.ser.showEditId
     this.ser.editShow(credentials,_id).subscribe((data)=>{
-      
+      this.toast.success({detail:"success Message",summary:"Updated Successfully!!",duration:5000})
     })
   }
   deleteShow(){
     let id=this.ser.showDeleteId
     this.ser.deleteShow(id).subscribe((data)=>{
-        console.log(data)
+      this.toast.success({detail:"success Message",summary:"Show is deleted!!",duration:5000})
       })
 
   }

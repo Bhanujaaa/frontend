@@ -15,6 +15,10 @@ import { FormsModule } from '@angular/forms';
 import { ShowssComponent } from './showss/showss.component';
 import { SeatsComponent } from './seats/seats.component';
 import { BookingsComponent } from './bookings/bookings.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -30,12 +34,15 @@ import { BookingsComponent } from './bookings/bookings.component';
     CommonModule,
     AdminRoutingModule,
     MatCardModule,
+    MatIconModule,
     MatFormFieldModule,
     MatToolbarModule,
     FlexLayoutModule,
     MatButtonModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSidenavModule,
+    MatTabsModule,
   ],
   exports:[
     MoviesComponent,

@@ -1,33 +1,63 @@
 <html>
-<mat-toolbar color="primary" class="navbar">
+  <div> 
+    <mat-toolbar color="primary">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+  
+      <a mat-button class="companyName" routerLink="/">
+        <span>Movie Mix</span>
+      </a>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink='/details' >My Bookings</a>
+        <a mat-button routerLink="/user/home" (click)="ser.LogOut()">LogOut</a>
+        
+      </div>
+  
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+  
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <a mat-button routerLink='/details' >My Bookings</a>
+        <a mat-button routerLink="/user/home" (click)="ser.LogOut()">LogOut</a>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+  
+     
+<!-- <mat-toolbar color="primary" class="navbar">
   <div>Movie Mix</div>
   <div>
     <span routerLink='/details' style="cursor: pointer;">My Bookings</span>
     <span class="HomePage" style="cursor: pointer;" routerLink="/user/home" (click)="ser.LogOut()">LogOut</span>
   </div>
-</mat-toolbar>
+</mat-toolbar> -->
 
 <div class="mat-elevation-z8">
 
     <mat-table [dataSource]="reserveDetails" class="table">
       <!-- Position Column -->
       <ng-container matColumnDef="cinemaId">
-        <mat-header-cell *matHeaderCellDef width="20%"><h1> Booking Details</h1></mat-header-cell>
+        <mat-header-cell *matHeaderCellDef width="20%" style="color:white"><h1> Booking Details :</h1></mat-header-cell>
         <!-- <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell> -->
-        <mat-cell *matCellDef="let element"><br>TheaterName<br>MovieName<br>UserId<br>Each TicketPrice<br>Number Of Tickets
+        <mat-cell *matCellDef="let element" style="color:white"><br>TheaterName<br>MovieName<br>UserId<br>Each TicketPrice<br>Seats Booked<br>Number Of Seats
         <br>Total Cost<br></mat-cell>
     
       </ng-container>
    
       <ng-container matColumnDef="movieId">
         <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
-        <mat-cell *matCellDef="let element"><br>-----<br>-----<br>-----<br>-----<br>-----</mat-cell>
+        <mat-cell *matCellDef="let element" style="color:white"><br>-----<br>-----<br>-----<br>-----<br>-----</mat-cell>
       </ng-container>
      
       <!-- Name Column -->
       <ng-container matColumnDef="ticketPrice">
         <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
-        <mat-cell *matCellDef="let element"><br>{{element.cinemaId.name}}<br>{{element.movieId.title}}<br>{{element.UserId.username}}<br>{{element.showId.ticketPrice}}<br>{{element.seats}} 
+        <mat-cell *matCellDef="let element" style="color:white"><br>{{element.cinemaId.name}}<br>{{element.movieId.title}}<br>{{element.UserId.username}}<br>{{element.showId.ticketPrice}}<br>{{element.seatNames}}<br>{{element.seats}}
         <br>{{element.total}}<br></mat-cell>
        
       </ng-container>
@@ -49,7 +79,10 @@
       <mat-row  *matRowDef="let row; columns: columns;"></mat-row>
       
     </mat-table>
-    <button mat-raised-button color="primary" style="justify-content: center;margin-left: 50%;" (click)="home()">OK</button>
+    <button mat-raised-button color="primary" style="justify-content: center;" (click)="home()">OK</button>
     <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
   </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+</div>
   </html>

@@ -45,6 +45,9 @@ import { AdminModule } from './admin/admin.module';
 import { ChangesroutModule } from './changesrout/changesrout.module';
 import { UpdatemovieComponent } from './changesrout/updatemovie/updatemovie.component';
 import { UpdatesModule } from './updates/updates.module';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {NgToastModule} from 'ng-angular-popup'
 
 
 
@@ -65,12 +68,14 @@ import { UpdatesModule } from './updates/updates.module';
    
   ],
   imports: [
+    NgToastModule,
     BrowserModule,
     CommonModule,
     ChangesroutModule,
     UpdatesModule,
     AppRoutingModule,
     FormsModule,
+    MatTabsModule,
     AdminModule,
     HttpClientModule,
     MatListModule,
@@ -78,7 +83,7 @@ import { UpdatesModule } from './updates/updates.module';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-   
+    MatIconModule,
     FlexLayoutModule,
     MatButtonModule,
     MatDatepickerModule,
@@ -93,6 +98,7 @@ import { UpdatesModule } from './updates/updates.module';
     MatDialogModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatSidenavModule,
     ReactiveFormsModule
   
     

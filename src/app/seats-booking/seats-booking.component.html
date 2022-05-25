@@ -1,28 +1,62 @@
 <html>
-<mat-toolbar color="primary" class="navbar">
+<div>
+    <mat-toolbar color="primary">
+        <div fxShow="true" fxHide.gt-sm="true">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+
+        <a mat-button class="companyName" routerLink="/">
+            <span>Movie Mix</span>
+        </a>
+        <span class="example-spacer"></span>
+        <div fxShow="true" fxHide.lt-md="true">
+            <a mat-button routerLink='/user/show'>Book</a>
+            <a mat-button routerLink='/details'>My Bookings</a>
+            <a mat-button routerLink="/user/home" (click)="seatService.LogOut()">LogOut</a>
+        </div>
+
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+
+        <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+            <div fxLayout="column">
+                <a mat-button routerLink='/user/show'>Book</a>
+                <a mat-button routerLink='/details'>My Bookings</a>
+                <a mat-button routerLink="/user/home" (click)="seatService.LogOut()">LogOut</a>
+            </div>
+        </mat-sidenav>
+        <!-- <mat-sidenav-content fxFlexFill> -->
+        <!-- <mat-toolbar color="primary" class="navbar">
     <div>Movie Mix</div>
     <div>
         <span routerLink='/user/show' style="cursor: pointer;">Book</span>
         <span routerLink='/details' style="cursor: pointer;">My Bookings</span>
       <span class="HomePage"  style="cursor:pointer" routerLink="/user/home" (click)="seatService.LogOut()">LogOut</span>
     </div>
-</mat-toolbar>
+</mat-toolbar> -->
 
-<div style="width: 100px; margin: 20px auto; display: block;">
-    <span [ngClass]="{'seat-disabled': true}">reserved</span>
-    <span [ngClass]="{'seat-selected': true}">selected</span>
-    <span [ngClass]="{'seat-select':true}">available</span>
+        <div style="width: 100px; margin: 20px auto; display: block;">
+            <span [ngClass]="{'seat-disabled': true}">reserved</span>
+            <span [ngClass]="{'seat-selected': true}">selected</span>
+            <span [ngClass]="{'seat-select':true}">available</span>
+        </div>
+        <div class="container-fluid">
+            <table>
+                <tr *ngFor="let row of rows">
+                    <td *ngFor="let seat of seats">
+                        <div [ngClass]="{'seat-select': !checkSeatStatus(row+''+seat), 'seat-selected':checkSeatStatus(row+''+seat), 'seat-disabled':isSeatReserved(row+''+seat)}"
+                            (click)="seatSelect(row+''+seat)">{{row+''+seat}}</div>
+                    </td>
+                </tr>
+            </table>
+            <button mat-raised-button color="primary" (click)="openDialog()" id="submitButton">Book Seat</button>
+            <!-- <button (click)="freeSeat()" id="freeSeats">Free All The Seats</button> -->
+        </div>
+        <!-- </mat-sidenav-content> -->
+
+    </mat-sidenav-container>
 </div>
-<div class="container-fluid">
-    <table>
-        <tr *ngFor="let row of rows">
-            <td *ngFor="let seat of seats">
-                <div [ngClass]="{'seat-select': !checkSeatStatus(row+''+seat), 'seat-selected':checkSeatStatus(row+''+seat), 'seat-disabled':isSeatReserved(row+''+seat)}"
-                    (click)="seatSelect(row+''+seat)">{{row+''+seat}}</div>
-            </td>
-        </tr>
-    </table>
-    <button mat-raised-button color="primary" (click)="openDialog()" id="submitButton">Book Seat</button>
-    <!-- <button (click)="freeSeat()" id="freeSeats">Free All The Seats</button> -->
-</div>
+
 </html>

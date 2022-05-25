@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ServiceService } from 'src/app/service.service';
 import { CinemaUpdateComponent } from 'src/app/updates/cinema-update/cinema-update.component';
 import { AdminServiceService } from '../admin-service.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-cinemas',
@@ -11,7 +12,7 @@ import { AdminServiceService } from '../admin-service.service';
 })
 export class CinemasComponent implements OnInit {
 public cine:any
-  constructor(public ser:AdminServiceService, public dialog:MatDialog,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService,private toast:NgToastService, public dialog:MatDialog,public service:ServiceService) { }
 
   ngOnInit(): void {
     this.ser.getCine().subscribe((data)=>{
@@ -26,6 +27,7 @@ public cine:any
 
 this.ser.cineAdd=false
 this.ngOnInit();  
+
     })
     
   }
@@ -36,6 +38,7 @@ this.ngOnInit();
     dialogRef.afterClosed().subscribe(result=>{
       this.ser.cineEdit=false
       this.ngOnInit();
+      
     })
     
 // this.ser.editMovies(id).subscribe((data)=>{
@@ -49,6 +52,7 @@ this.ngOnInit();
     dialogRef.afterClosed().subscribe(result=>{
       this.ser.cineDelete=false 
       this.ngOnInit();
+    
     })
   }
 }

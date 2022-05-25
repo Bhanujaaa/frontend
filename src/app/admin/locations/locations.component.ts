@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ServiceService } from 'src/app/service.service';
 import { LocationUpdateComponent } from 'src/app/updates/location-update/location-update.component';
 import { AdminServiceService } from '../admin-service.service';
+import { NgToastModule, NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-locations',
@@ -11,7 +12,7 @@ import { AdminServiceService } from '../admin-service.service';
 })
 export class LocationsComponent implements OnInit {
 public loc:any
-  constructor(public ser:AdminServiceService, public dialog:MatDialog,public service:ServiceService) { }
+  constructor(public ser:AdminServiceService, private toast:NgToastService,public dialog:MatDialog,public service:ServiceService) { }
 
   ngOnInit(): void {
     this.ser.getCity().subscribe((data)=>{
@@ -25,6 +26,7 @@ public loc:any
 console.log(result)
 this.ser.cityAdd=false
 this.ngOnInit();
+
     })
     
   }
@@ -36,6 +38,7 @@ this.ngOnInit();
       this.ser.cityEdit=false
       console.log(result)
       this.ngOnInit();
+    
     })
     
 // this.ser.editMovies(id).subscribe((data)=>{
@@ -50,6 +53,7 @@ this.ngOnInit();
       this.ser.cityDelete=false 
       console.log(result)
       this.ngOnInit();
+     
     })
   // deleteCity(id:string){
   //   this.ser.cityDelete=true

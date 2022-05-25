@@ -1,13 +1,35 @@
 <html>
-<mat-toolbar color="primary" class="navbar">
-  <div>Movie Mix</div>
-  <div>
-    <span class="HomePage" style="cursor: pointer;" routerLink="/user/home">Home</span>
-    <span class="LoginPage" style="cursor: pointer;" routerLink="/user/login">Login</span>
-    <span class="RegisterPage" style="cursor: pointer;" routerLink="/user/register">Register</span>
-  </div>
-
-</mat-toolbar>
+  <div> 
+    <mat-toolbar color="primary">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+  
+      <a mat-button class="companyName" routerLink="/">
+        <span>Movie Mix</span>
+      </a>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/user/home">Home</a>
+        <a mat-button routerLink="/user/login">Login</a>
+        <a mat-button routerLink="/user/register">Register</a>
+      </div>
+  
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+  
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <a mat-button routerLink="/user/home">Home</a>
+        <a mat-button routerLink="/user/login">Login</a>
+        <a mat-button routerLink="/user/register">Register</a>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+  
+    
 
 <div class="form-container">
 <mat-card class="bg-card mat-elevation-z19">
@@ -25,6 +47,9 @@
     <button mat-raised-button color="primary">Register</button>
   </form>
 </mat-card>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
 </div>
 <router-outlet></router-outlet>
 </html>

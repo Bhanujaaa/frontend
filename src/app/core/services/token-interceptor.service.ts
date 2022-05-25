@@ -13,7 +13,10 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(public ser: ServiceService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // return next.handle(req)
-    if (localStorage.getItem('token')) {
+    
+    let a=(localStorage.getItem('token'))
+    console.log(a)
+    if (a!='undefined'&& a ) {
       if (req.url.indexOf('refresh') > -1) {
         return next.handle(req)
       }

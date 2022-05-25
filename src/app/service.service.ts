@@ -25,7 +25,9 @@ export class ServiceService {
   public isLogin:boolean=false
 
   private _seats: Array<Seats>;
-  url:string='http://34.208.61.254:8080'
+  url:string='http://54.200.25.127:8080'
+  // url:string='http://localhost:8080'
+
   constructor(private http:HttpClient, private router:Router, private dialog:MatDialog ) {    this._seats = []; this.idCine; this.idRes }
   // openConfirmDialog(){
   //   this.dialog.open(DialogComponent,{
@@ -37,6 +39,7 @@ export class ServiceService {
     return this.http.post<any>(`${this.url}/refresh`,{refreshToken})
   }
   LoginUser(email:string,password:string):Observable<any>{
+    console.log("inside login user")
     return this.http.post<any>(`${this.url}/users/login`,{email,password})
   }
   getShowtime():Observable<showtime[]>{
@@ -148,8 +151,8 @@ public changeCinemaSeat(seatsAvailable:number,_id:number){
 
   
 }
-public confirm(seats:number,ticketPrice:number,total:number,showId:string,cinemaId:string,movieId:string,UserId:string):Observable<any>{
-  return this.http.post<any>(`${this.url}/reservations`,{seats,ticketPrice,total,showId,cinemaId,movieId,UserId})
+public confirm(seats:number,ticketPrice:number,total:number,showId:string,cinemaId:string,movieId:string,UserId:string,seatNames:any):Observable<any>{
+  return this.http.post<any>(`${this.url}/reservations`,{seats,ticketPrice,total,showId,cinemaId,movieId,UserId,seatNames})
 }
 public seatUpdate(seat:any,id:any):Observable<any>{
   return this.http.post<any>(`${this.url}/show/seats/update`,{seat,id})

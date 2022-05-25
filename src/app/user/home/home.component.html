@@ -1,13 +1,54 @@
-<html>
+<!-- <html>
 <mat-toolbar  class="navbar">
-    <div>Movie Mix</div>
-    <div>
+  <div class="menu-icon" sytle="display:none  ">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+    <span>Movie Mix</span>
+  </div>  
+<div>
       <span class="HomePage"  style="cursor: pointer;" routerLink="/user/home">Home</span>
       <span class="LoginPage" style="cursor: pointer;" routerLink="/user/login">Login</span>
       <span class="RegisterPage" style="cursor: pointer;" routerLink="/user/register">Register</span>
-    </div>
+</div>
   
   </mat-toolbar>
-  <router-outlet></router-outlet>
-  
-  </html>
+<router-outlet></router-outlet>
+</html> -->
+<html>
+<div> 
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span>Movie Mix</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/user/home">Home</a>
+      <a mat-button routerLink="/user/login">Login</a>
+      <a mat-button routerLink="/user/register">Register</a>
+    </div>
+
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <br>
+        
+        <a mat-button routerLink="/user/home">Home</a>
+      <a mat-button routerLink="/user/login">Login</a>
+      <a mat-button routerLink="/user/register">Register</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+</html>

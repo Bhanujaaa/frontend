@@ -23,6 +23,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ReservedComponent } from './reserved/reserved.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {FlexLayoutModule} from '@angular/flex-layout'
 console.log("user module loaded")
 
 @NgModule({
@@ -53,7 +56,10 @@ console.log("user module loaded")
     MatDialogModule,
     MatSnackBarModule,
     MatIconModule,
-    MatCardModule
+    FlexLayoutModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSidenavModule
   ],
   exports:[
     LoginComponent,

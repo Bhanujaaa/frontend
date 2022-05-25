@@ -7,6 +7,7 @@ import { ServiceService } from 'src/app/service.service';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, FormGroup } from '@angular/forms';
 import  jwt_decode from 'jwt-decode'
+import {NgToastService} from 'ng-angular-popup'
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   password!: string
  
   logedIn:boolean=false
-  constructor(private http: HttpClient, private router: Router, private userservice: UserService,private ser:ServiceService) { }
+  constructor(private http: HttpClient, private router: Router, private toast:NgToastService, private userservice: UserService,private ser:ServiceService) { }
   public errorMsg!:string;
   public successMsg!:string;
   hide: boolean = false;
@@ -34,8 +35,11 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     }
+    console.log(credentials)
+    console.log("above are credetials")
     this.ser.LoginUser(credentials.email,credentials.password).subscribe((user:any)=>{
       console.log(user.user)
+      console.log("user is here",user)
       console.log(this.router)
       this.logedIn=true
       this.ser.UserId=user.user._id
@@ -43,6 +47,8 @@ export class LoginComponent implements OnInit {
       console.log(this.ser.UserId)
       console.log("loginUser")
       // console.log(user)
+      let lucha ="hi"
+      localStorage.setItem('chumma',lucha);
       localStorage.setItem('token',user.token)
       localStorage.setItem('userType',user.user.role)
       localStorage.setItem('refresh',user.refresh)
@@ -54,9 +60,13 @@ export class LoginComponent implements OnInit {
       // console.log(user.user.role)
       this.ser.logPut()
       if(user.user.role=="admin"){
+        // alert("welcome admmin")
+        this.toast.success({detail:"success Message",summary:"Welcome back admin",duration:5000})
         this.router.navigateByUrl('/admin/movie')
       }
       else{
+        // alert("welcom user")
+        this.toast.success({detail:"success Message",summary:"Welcome back user",duration:5000})
         this.router.navigateByUrl('/user/show')
       }
     
@@ -65,6 +75,7 @@ export class LoginComponent implements OnInit {
       this.successMsg="welcome"
     },
     (error)=>{
+      this.toast.error({detail:"error Message",summary:"Login failed",duration:5000})
       this.errorMsg=error.error.error.message
     }
     )
